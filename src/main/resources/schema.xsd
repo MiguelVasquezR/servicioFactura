@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="t4is.uv.mx/factura"
+    xmlns:tns="t4is.uv.mx/factura" elementFormDefault="qualified">
+
+    <xs:element name="CrearFacturaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Receptor">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="RFC" type="xs:string"/>
+                            <xs:element name="Nombre" type="xs:string"/>
+                            <xs:element name="RegimenFiscal" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Emisor">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="RFC" type="xs:string"/>
+                            <xs:element name="Nombre" type="xs:string"/>
+                            <xs:element name="RegimenFiscal" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="Productos">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Producto" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Nombre" type="xs:string"/>
+                                        <xs:element name="Cantidad" type="xs:int"/>
+                                        <xs:element name="PrecioUnitario" type="xs:decimal"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CrearFacturaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Mensaje" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+
+
+    </xs:element>
+
+    <xs:element name="ConsultarFacturaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                 <xs:element name="Productos" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Nombre" />
+                            <xs:element name="Cantidad" />
+                            <xs:element name="PrecioUnitario" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ConsultarFacturaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="NumFactura" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
